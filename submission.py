@@ -3,7 +3,7 @@ import numpy as np
 
 
 
-sub_pd = pd.read_csv('sampleSubmission.csv',index_col='Id')
+sub_pd = pd.read_csv('data/sampleSubmission.csv',index_col='Id')
 
 def extract_users_items_predictions(data_pd):
     users, movies = [np.squeeze(arr) for arr in np.split(data_pd.index.str.extract('r(\d+)_c(\d+)').values.astype(int) - 1, 2, axis=-1)]
