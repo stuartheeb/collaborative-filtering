@@ -11,7 +11,7 @@ def extract_users_items_predictions(data_pd):
 
 
 def Create_Matrix(number_of_users,number_of_movies):
-    data_pd = pd.read_csv('data_train.csv')
+    data_pd = pd.read_csv('data/data_train.csv')
     users, movies, predictions = extract_users_items_predictions(data_pd)
     data = np.full((number_of_users, number_of_movies), -1)
     for user, movie, pred in zip(users, movies, predictions):
