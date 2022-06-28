@@ -1,4 +1,7 @@
 import numpy as np
+from surprise import Dataset
+from surprise import Reader
+import pandas as pd
 
 def preprocess(data,number_of_users,number_of_movies):
     mean_rating = []
@@ -22,3 +25,29 @@ def preprocess(data,number_of_users,number_of_movies):
                 norm_data[j][i] = (float(data[j][i] - mean_movie_rating)) / std_movie_rating
 
     return norm_data,mean_rating,std_rating
+
+def surprise_preprocess(data,number_of_users,number_of_movies):
+    norm_data, mean_rating, std_rating = preprocess(data, number_of_users, number_of_movies)
+    userID = []
+    itemID = []
+    rating = []
+    for i in range(number_of_users):
+        for j in range(number_of_movies):
+            userID.append(i)
+            itemID.append(j)
+            rating.append(norm_data[i][j])
+
+    ratings_dict = {'itemID': itemID,
+                    'userID': userID,
+                    'rating': rating}
+    df = pd.DataFrame(ratings_dict)
+
+    # The columns must correspond to user id, item id and ratings (in that order).
+    reader = Reader(rating_scale=(-7, 3))
+    surprise_data = Dataset.load_from_df(df[['userID', 'itemID', 'rating']], reader=reader)
+    trainset = surprise_data.build_full_trainset()
+    return trainset,norm_data,mean_rating,std_rating
+
+
+
+

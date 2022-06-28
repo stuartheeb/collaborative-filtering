@@ -14,9 +14,9 @@ def baseline(number_of_users,number_of_movies,n_factors_svd,n_factors_als,n_iter
     print("--Pre process--")
     A,mean_rating,std_rating = preprocess(data,number_of_users,number_of_movies)
     print("--Apply SVD--")
-    A, U, Vt = SVD(A, n_factors_svd, number_of_users, number_of_movies)
+    B, U, Vt = SVD(A, n_factors_svd, number_of_users, number_of_movies)
     for i in range(n_iterations_svd-1):
-        A, U, Vt = SVD(A, n_factors_svd,number_of_users,number_of_movies)
+        B, U, Vt = SVD(B, n_factors_svd,number_of_users,number_of_movies)
     print("--Apply ALS--")
     predict_matrix = runALS(A, mask_data, n_factors_als, n_iterations_als, lambda_, U, Vt)
     print("--Post Process--")

@@ -9,7 +9,7 @@ from submission import submission
 def runALS(A, R, n_factors, n_iterations, lambda_, U=None, Vt=None):
     print ("Initiating ")
     n, m = A.shape
-    if U and Vt:
+    if U.any() and Vt.any():
         Users = U[:,:n_factors]
         Items = Vt[:n_factors,:]
     else:
