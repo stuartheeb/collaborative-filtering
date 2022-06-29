@@ -6,6 +6,7 @@ from surpriseSVD import surpriseSVDmodel
 from surpriseSVD import surpriseSVDppmodel
 from SurpriseSVDALS import surpriseSVDALSmodel
 from SurpriseSVDALS import surpriseSVDppALSmodel
+from validation import validation
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-model","--model",type=str,default='baseline',help="Model/Algo to run")
@@ -48,5 +49,6 @@ if model == 'surprise-svd-als':
     surpriseSVDALSmodel(10000,1000,SVD_Latent_Factors,SVD_Iterations,Surprise_lr,Surprise_reg,ALS_Latent_Factors,ALS_Iterations,ALS_lambda)
 if model == 'surprise-svdpp-als':
     surpriseSVDppALSmodel(10000,1000,SVD_Latent_Factors,SVD_Iterations,Surprise_lr,Surprise_reg,ALS_Latent_Factors,ALS_Iterations,ALS_lambda)
-
+if model == 'validation':
+    validation(10000,1000,SVD_Latent_Factors,ALS_Latent_Factors,SVD_Iterations,ALS_Iterations,ALS_lambda)
 

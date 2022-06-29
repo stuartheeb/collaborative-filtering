@@ -22,3 +22,4 @@ def extract_prediction_from_full_matrix(reconstructed_matrix, users, movies):
 def evaluate(predict_matrix,users,movies,predictions,model):
     test_predictions = extract_prediction_from_full_matrix(predict_matrix,users,movies)
     print("RMSE using"+" " + model + " is: {:.4f}".format(get_score(test_predictions,predictions)))
+    return get_score(test_predictions,predictions)
