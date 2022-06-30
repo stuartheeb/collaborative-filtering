@@ -17,12 +17,16 @@ def Create_Matrix(number_of_users,number_of_movies):
     for user, movie, pred in zip(users, movies, predictions):
         data[user][movie] = pred
 
+    total_ratings = 0
     mask_data = np.zeros((number_of_users, number_of_movies))
     for i in range(number_of_users):
         for j in range(number_of_movies):
             if data[i][j] != -1:
+                total_ratings += 1
                 mask_data[i][j] = 1
 
+    rating_percentage = total_ratings / (number_of_users * number_of_movies)
+    print('There are a total of ' + str(total_ratings) + ' ratings, which means that ' + str(rating_percentage) + ' of all entries exist')
     return data,mask_data,users,movies,predictions
 
 
