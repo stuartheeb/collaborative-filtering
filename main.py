@@ -8,6 +8,7 @@ from SurpriseSVDALS import surpriseSVDALSmodel
 from SurpriseSVDALS import surpriseSVDppALSmodel
 from validation import validation
 from validation_surprise import validation_surprise
+from stuart_test import stuart_test
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-model","--model",type=str,default='baseline',help="Model/Algo to run")
@@ -54,3 +55,5 @@ if model == 'validation':
     validation(10000,1000,SVD_Latent_Factors,ALS_Latent_Factors,SVD_Iterations,ALS_Iterations,ALS_lambda)
 if model == 'validation_surprise':
     validation_surprise(10000,1000,SVD_Latent_Factors,ALS_Latent_Factors,SVD_Iterations,ALS_Iterations,ALS_lambda)
+if model == 'stuart_test':
+    stuart_test
