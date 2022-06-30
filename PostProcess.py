@@ -1,5 +1,5 @@
 import numpy as np
-from pykeen.models.predict import get_tail_prediction_df, get_head_prediction_df, get_relation_prediction_df
+#from pykeen.models.predict import get_tail_prediction_df, get_head_prediction_df, get_relation_prediction_df
 
 def post_process(predict_matrix,mean_rating,std_rating,number_of_users,number_of_movies):
     A = np.zeros((number_of_users, number_of_movies))
