@@ -56,4 +56,4 @@ if model == 'validation':
 if model == 'validation_surprise':
     validation_surprise(10000,1000,SVD_Latent_Factors,ALS_Latent_Factors,SVD_Iterations,ALS_Iterations,ALS_lambda)
 if model == 'stuart_test':
-    stuart_test
+    stuart_test()
