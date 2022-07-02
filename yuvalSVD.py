@@ -8,17 +8,15 @@ from evaluation import evaluate
 from typing import Optional
 
 
-def SVD(A: np.ndarray, k: int, n_users: int, n_items: int) -> np.ndarray:
+def SVD(A: np.ndarray, k: int) -> np.ndarray:
     """
     TODO please add description
 
     :param A: matrix to decompose
     :param k: number of singular values
-    :param n_users: number of users
-    :param n_items: number of items
     :return: the decomposition of A, as a 3-tuple.
     """
-    assert(k <= min(n_users, n_items)), "choose correct number of singular values"
+    assert(k <= min(A.shape)), "The number of latent factors should be no greater than the number of users or items."
     U, S, VT = np.linalg.svd(A, full_matrices=False)
     Sk = np.diag(S[:k])
     return U[:, :k] @ Sk @ VT[:k, :]
@@ -42,7 +40,7 @@ def SVD_model(input_path: Path, n_users: int, n_items: int, n_factors: int, outp
     print("--Data Preprocessing--")
     A, mean_ratings, std_ratings = pre_process(ratings, observed)
     print("--Perform SVD--")
-    A = SVD(A, n_factors, n_users, n_items)
+    A = SVD(A, n_factors)
     print("--Post Process Data--")
     predict_matrix = post_process(A, mean_ratings, std_ratings)
     predict_matrix = np.round(predict_matrix).astype(int)
