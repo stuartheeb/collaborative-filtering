@@ -1,8 +1,8 @@
-from CreateMatrix import Create_Matrix
-from Preprocess import kg_preprocess
-from PostProcess import kg_postprocess
-from evaluation import evaluate
-from submission import submission
+from Utils.CreateMatrix import Create_Matrix
+from Utils.Preprocess import kg_preprocess
+from Utils.PostProcess import kg_postprocess
+from Evaluation.evaluation import evaluate
+from Utils.submission import submission
 from pykeen.pipeline import pipeline
 from pykeen.models import TransE, TuckER, DistMult, MuRE
 from pykeen.triples import TriplesFactory

@@ -23,4 +23,4 @@ def submission(predict_matrix,number_of_users,number_of_movies,model):
                 Id.append("r"+str(i+1)+"_c"+str(j+1))
                 pred.append(predict_matrix[i][j])
     sub_pd['Prediction'] = pred
-    sub_pd.to_csv(model+".csv")
+    sub_pd.to_csv("Results/"+model+".csv")

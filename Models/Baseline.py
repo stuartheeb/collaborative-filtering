@@ -1,10 +1,10 @@
-from CreateMatrix import Create_Matrix
-from Preprocess import preprocess
-from SVD import SVD
-from ALS import runALS
-from PostProcess import post_process
-from evaluation import evaluate
-from submission import submission
+from Utils.CreateMatrix import Create_Matrix
+from Utils.Preprocess import preprocess
+from Models.SVD.SVD import SVD
+from Models.ALS import runALS
+from Utils.PostProcess import post_process
+from Evaluation.evaluation import evaluate
+from Utils.submission import submission
 
 def baseline(number_of_users,number_of_movies,n_factors_svd,n_factors_als,n_iterations_svd,n_iterations_als,lambda_):
     model_str = "baseline"

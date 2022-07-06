@@ -1,9 +1,9 @@
 import numpy as np
-from CreateMatrix import Create_Matrix
-from Preprocess import preprocess
-from PostProcess import post_process
-from evaluation import evaluate
-from submission import submission
+from Utils.CreateMatrix import Create_Matrix
+from Utils.Preprocess import preprocess
+from Utils.PostProcess import post_process
+from Evaluation.evaluation import evaluate
+from Utils.submission import submission
 
 
 def runALS(A, R, n_factors, n_iterations, lambda_, U=None, Vt=None):

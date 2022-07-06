@@ -1,13 +1,13 @@
 import argparse
-from Baseline import baseline
-from SVD import SVD_model
-from ALS import ALS_model
-from surpriseSVD import surpriseSVDmodel
-from surpriseSVD import surpriseSVDppmodel
-from SurpriseSVDALS import surpriseSVDALSmodel
-from SurpriseSVDALS import surpriseSVDppALSmodel
-from validation import validation
-from validation_surprise import validation_surprise
+from Models.Baseline import baseline
+from Models.SVD.SVD import SVD_model
+from Models.ALS import ALS_model
+from Models.SVD.surpriseSVD import surpriseSVDmodel
+from Models.SVD.surpriseSVD import surpriseSVDppmodel
+from Models.SurpriseSVDALS import surpriseSVDALSmodel
+from Models.SurpriseSVDALS import surpriseSVDppALSmodel
+from Evaluation.validation import validation
+from Evaluation.validation_surprise import validation_surprise
 from stuart_test import stuart_test
 
 ap = argparse.ArgumentParser()
