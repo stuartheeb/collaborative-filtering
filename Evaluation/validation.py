@@ -1,11 +1,11 @@
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
-from Preprocess import preprocess
-from ALS import runALS
-from SVD import SVD
-from PostProcess import post_process
-from evaluation import evaluate
+from Utils.Preprocess import preprocess
+from Models.ALS import runALS
+from Models.SVD.SVD import SVD
+from Utils.PostProcess import post_process
+from Evaluation.evaluation import evaluate
 
 
 

@@ -1,10 +1,10 @@
 import numpy as np
 import argparse
 from pathlib import Path
-from Parser import read_csv, write_csv, DEFAULT_INPUT, RESULTS_DIR
-from Utils import get_curr_timestamp, construct_ratings_matrix
-from NormalizeRatingsPerItem import pre_process, post_process
-from evaluation import evaluate
+from Utils.Parser import read_csv, write_csv, DEFAULT_INPUT, RESULTS_DIR
+from Utils.Utils import get_curr_timestamp, construct_ratings_matrix
+from Utils.NormalizeRatingsPerItem import pre_process, post_process
+from Evaluation.evaluation import evaluate
 from typing import Optional
 
 

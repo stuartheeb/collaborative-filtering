@@ -1,9 +1,9 @@
 import numpy as np
-from CreateMatrix import Create_Matrix
-from Preprocess import surprise_preprocess
-from PostProcess import surprise_post_process
-from evaluation import evaluate
-from submission import submission
+from Utils.CreateMatrix import Create_Matrix
+from Utils.Preprocess import surprise_preprocess
+from Utils.PostProcess import surprise_post_process
+from Evaluation.evaluation import evaluate
+from Utils.submission import submission
 from surprise import SVD
 from surprise import SVDpp
 

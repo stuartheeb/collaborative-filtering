@@ -1,12 +1,11 @@
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
-from Preprocess import surprise_preprocess
-from ALS import runALS
+from Utils.Preprocess import surprise_preprocess
+from Models.ALS import runALS
 from surprise import SVD
-from PostProcess import post_process
-from evaluation import evaluate
-
+from Utils.PostProcess import surprise_post_process
+from Evaluation.evaluation import evaluate
 
 
 def extract_users_items_predictions(data_pd):
@@ -43,12 +42,14 @@ def validation_surprise(number_of_users,number_of_movies,n_factors_svd,n_factors
     print("--Perform SVD--")
     algo = SVD(n_factors=n_factors_svd, n_epochs=n_iterations_svd)
     algo.fit(trainset)
-    U = algo.pu
+    '''U = algo.pu
     Vt = algo.qi.T
     print("--Apply ALS--")
     predict_matrix = runALS(A, mask_data, n_factors_als, n_iterations_als, lambda_, U, Vt)
     print("--Post Process--")
-    predict_matrix = post_process(predict_matrix,mean_rating,std_rating,number_of_users,number_of_movies)
+    predict_matrix = post_process(predict_matrix,mean_rating,std_rating,number_of_users,number_of_movies)'''
+    print("--Post Process Data--")
+    predict_matrix = surprise_post_process(algo, mean_rating, std_rating, number_of_users, number_of_movies)
     print("--Evaluate--")
     evaluate(predict_matrix,users, movies, predictions, "train")
     score = evaluate(predict_matrix,val_users,val_movies,val_predictions,"test")

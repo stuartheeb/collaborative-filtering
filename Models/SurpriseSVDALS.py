@@ -1,12 +1,12 @@
 import numpy as np
-from CreateMatrix import Create_Matrix
-from Preprocess import surprise_preprocess
-from PostProcess import post_process
-from evaluation import evaluate
-from submission import submission
+from Utils.CreateMatrix import Create_Matrix
+from Utils.Preprocess import surprise_preprocess
+from Utils.PostProcess import post_process
+from Evaluation.evaluation import evaluate
+from Utils.submission import submission
 from surprise import SVD
 from surprise import SVDpp
-from ALS import runALS
+from Models.ALS import runALS
 
 def surpriseSVDALSmodel(number_of_users,number_of_movies,n_factors_svd,n_iterations_svd,lr_all,reg_all,n_factors_als,n_iterations_als, lambda_):
     model_str = "Surprise_SVD_ALS_model" + "_" + str(n_factors_svd) + "_" + str(n_iterations_svd)

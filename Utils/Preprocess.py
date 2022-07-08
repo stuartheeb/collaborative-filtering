@@ -49,5 +49,19 @@ def surprise_preprocess(data,number_of_users,number_of_movies):
     return trainset,norm_data,mean_rating,std_rating
 
 
+def kg_preprocess(data,number_of_users,number_of_movies):
+    userID = []
+    itemID = []
+    rating = []
+    for i in range(number_of_users):
+        for j in range(number_of_movies):
+            if data[i][j] != -1:
+                userID.append(str(i))
+                itemID.append(str(j))
+                rating.append(str(data[i][j]))
+
+    ratings_dict = {'userID': userID,'rating': rating,'itemID': itemID}
+    df = pd.DataFrame(ratings_dict)
+    return df
 
 
