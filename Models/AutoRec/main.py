@@ -12,7 +12,7 @@ parser = argparse.ArgumentParser(description='I-AutoRec ')
 parser.add_argument('--hidden_neuron', type=int, default=500)
 parser.add_argument('--lambda_value', type=float, default=1)
 
-parser.add_argument('--train_epoch', type=int, default=2000)
+parser.add_argument('--train_epoch', type=int, default=100)
 parser.add_argument('--batch_size', type=int,default=100)
 
 parser.add_argument('--optimizer_method', choices=['Adam','RMSProp'],default='Adam')
@@ -33,8 +33,8 @@ data_name = 'cil'; num_users = 10000; num_items = 1000; num_total_ratings = 1176
 path = "./data/%s" % data_name + "/"
 
 result_path = './results/' + data_name + '/' + str(args.random_seed) + '_' + str(args.optimizer_method) + '_' + str(args.base_lr) + "_" + str(current_time)+"/"
-R, mask_R, C, train_R, train_mask_R, test_R, test_mask_R,num_train_ratings,num_test_ratings,\
-user_train_set,item_train_set,user_test_set,item_test_set \
+R, mask_R, C, train_R, train_mask_R, test_R, test_mask_R,val_R, val_mask_R,num_train_ratings,num_test_ratings,\
+user_train_set,item_train_set,user_test_set,item_test_set,user_val_set,item_val_set \
     = read_rating(path, num_users, num_items,num_total_ratings, 1, 0, train_ratio)
 
 print('train_R.shape = ' + str(train_R.shape))
@@ -49,10 +49,11 @@ print(np.sum(R[:,2]))
 
 config = tf.ConfigProto()
 config.gpu_options.allow_growth=True
+best_rmse = np.inf
 with tf.Session(config=config) as sess:
     AutoRec = AutoRec(sess,args,
                       num_users,num_items,
-                      R, mask_R, C, train_R, train_mask_R, test_R, test_mask_R,num_train_ratings,num_test_ratings,
-                      user_train_set, item_train_set, user_test_set, item_test_set,
-                      result_path)
+                      R, mask_R, C, train_R, train_mask_R, test_R, test_mask_R,val_R, val_mask_R,num_train_ratings,num_test_ratings,
+                      user_train_set, item_train_set, user_test_set, item_test_set, user_val_set, item_val_set,
+                      result_path,best_rmse)
     AutoRec.run()

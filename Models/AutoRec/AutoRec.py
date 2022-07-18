@@ -10,12 +10,13 @@ import math
 class AutoRec():
     def __init__(self,sess,args,
                       num_users,num_items,
-                      R, mask_R, C, train_R, train_mask_R, test_R, test_mask_R,num_train_ratings,num_test_ratings,
-                      user_train_set, item_train_set, user_test_set, item_test_set,
-                      result_path):
+                      R, mask_R, C, train_R, train_mask_R, test_R, test_mask_R,val_R,val_mask_R,num_train_ratings,num_test_ratings,
+                      user_train_set, item_train_set, user_test_set, item_test_set,user_val_set,item_val_set,
+                      result_path,best_rmse):
 
         self.sess = sess
         self.args = args
+        self.saver = None
 
         self.num_users = num_users
         self.num_items = num_items
@@ -27,6 +28,8 @@ class AutoRec():
         self.train_mask_R = train_mask_R
         self.test_R = test_R
         self.test_mask_R = test_mask_R
+        self.val_R = val_R
+        self.val_mask_R = val_mask_R
         self.num_train_ratings = num_train_ratings
         self.num_test_ratings = num_test_ratings
 
@@ -34,6 +37,8 @@ class AutoRec():
         self.item_train_set = item_train_set
         self.user_test_set = user_test_set
         self.item_test_set = item_test_set
+        self.user_val_set = user_val_set
+        self.item_val_set = item_val_set
 
         self.hidden_neuron = args.hidden_neuron
         self.train_epoch = args.train_epoch
@@ -57,16 +62,28 @@ class AutoRec():
         self.test_rmse_list = []
 
         self.result_path = result_path
+        self.best_rmse = best_rmse
         self.grad_clip = args.grad_clip
 
     def run(self):
         self.prepare_model()
         init = tf.global_variables_initializer()
+        self.saver = tf.train.Saver()
         self.sess.run(init)
         for epoch_itr in range(self.train_epoch):
             self.train_model(epoch_itr)
             self.test_model(epoch_itr)
         self.make_records()
+
+        self.saver.restore(self.sess, "/Users/samyakjain/Desktop/Sem 2/cil-runtime-terror-main/Models/AutoRec")
+        Cost, Decoder = self.sess.run(
+            [self.cost, self.Decoder],
+            feed_dict={self.input_R: self.val_R,
+                       self.input_mask_R: self.val_mask_R})
+
+        Estimated_R = Decoder.clip(min=1, max=5)
+        with open('autorec.npy', 'wb') as f:
+            np.save(f, Estimated_R)
 
     def prepare_model(self):
         self.input_R = tf.placeholder(dtype=tf.float32, shape=[None, self.num_items], name="input_R")
@@ -151,6 +168,10 @@ class AutoRec():
             numerator = np.sum(np.square(pre_numerator))
             denominator = self.num_test_ratings
             RMSE = np.sqrt(numerator / float(denominator))
+            if (RMSE < self.best_rmse):
+                self.saver.save(self.sess, "/Users/samyakjain/Desktop/Sem 2/cil-runtime-terror-main/Models/AutoRec")
+                self.best_rmse = RMSE
+                print("updated model checkpoint")
 
             self.test_rmse_list.append(RMSE)
 
