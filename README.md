@@ -1,6 +1,15 @@
 * [Kaggle competition](https://www.kaggle.com/competitions/cil-collaborative-filtering-2022/data)
 * [data_train.csv](data/data_train.csv)
 * [sampleSubmission.csv](data/sampleSubmission.csv)
+
+Separate python notebooks for the different methods and models.
+
+
+DELETE BELOW
+
+
+
+
 * python main.py --model svd --svd_latent_factors 3 --svd_iterations 10 
 
 ## Setup
