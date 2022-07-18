@@ -1,8 +1,8 @@
-# CIL 2022 Project Repository
+# CIL 2022 Project Repository
 
 Team: Runtime Terror
 
-## Code
+## Code
 
 There are separate notebooks for each method or model or group thereof. Each notebook is self-contained and will run independently.
 
