@@ -4,10 +4,10 @@ Team: Runtime Terror
 
 ## Code
 
-There are separate notebooks for each method or model or group thereof. Each notebook is self-contained and will run independently.
+There are separate [notebooks](notebooks) for each method or model or group thereof. Each notebook is self-contained and will run independently.
 
 * [Baseline Approaches](notebooks)
-* [Neural Nets](notebooks)
+* [Neural Nets](notebooks/neural_nets.ipynb)
 * [Factorization Machines](notebooks)
 
 ## Links and Data
