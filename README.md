@@ -2,13 +2,27 @@
 
 Team: Runtime Terror
 
-## Code
+## Overview
 
-There are separate [notebooks](notebooks) for each method or model or group thereof. Each notebook is self-contained and will run independently.
 
-* [Baseline Approaches](notebooks)
-* [Neural Nets](notebooks/neural_nets.ipynb)
-* [Factorization Machines](notebooks)
+## Content
+
+The project contains the following methods, runnable as self-contained and independent Jupyter notebooks,  for collaborative filtering:
+
+### Matrix Factorization
+
+* The baseline solution - SVD + ALS on a normalized dataset ([notebook](notebooks/Baseline.ipynb)).
+
+### Factorization Machines
+
+## Setup
+
+1. Start by creating a virtual environment, using conda for example.
+2. Activate the virtual environment, and from the project root run
+    ```bash
+    pip install -r requirements.txt
+    ```
+   to install all the python packages required for this project.
 
 ## Links and Data
 
