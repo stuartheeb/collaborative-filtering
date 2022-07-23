@@ -3,3 +3,4 @@ numpy
 typing
 tqdm
 scikit-learn
+surprise
