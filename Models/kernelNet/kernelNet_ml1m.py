@@ -125,8 +125,12 @@ best_epoch = -1
 with tf.Session() as sess:
     sess.run(init)
     print("num epochs to run: ",int(n_epoch / output_every))
+
+    with open(os.path.join(DATA_DIR,'summary_ml1m.txt'), 'a') as file:
+        file.write("new training with parameters: " + str(lambda_2) + ' ' + str(lambda_s) + "\n")
+        file.close()
+
     for i in range(int(n_epoch / output_every)):
-    #for i in range(1):
         optimizer.minimize(sess, feed_dict={R: tr}) #do maxiter optimization steps
         pre = sess.run(prediction, feed_dict={R: tr}) #predict ratings
 
@@ -134,25 +138,23 @@ with tf.Session() as sess:
         error_train = (tm * (np.clip(pre, 1., 5.) - tr) ** 2).sum() / tm.sum() #compute train error
 
         print('.-^-._' * 12)
-        print('epoch:', i, 'validation rmse:', np.sqrt(error), 'train rmse:', np.sqrt(error_train))
+        print('epoch:', i+1, 'validation rmse:', np.sqrt(error), 'train rmse:', np.sqrt(error_train))
         print('.-^-._' * 12)
 
         if(np.sqrt(error) < best_rmse):
           saver.save(sess, os.path.join(DATA_DIR, "checkpoints/model"))
           best_rmse = np.sqrt(error)
-          best_epoch = i
+          best_epoch = i+1
           print("updated model checkpoint")
 
+        with open(os.path.join(DATA_DIR,'summary_ml1m.txt'), 'a') as file:
+            file.write("epoch " + str(i+1) + " : " + str(np.sqrt(error)) + ' ' + str(np.sqrt(error_train))
+                    + ' ' + str(seed) + '\n')
+            file.close()
+
     print("finished training, best rmse = ", best_rmse, " best epoch: ", best_epoch)
-    with open('summary_ml1m.txt', 'a') as file:
-        for a in sys.argv[2:]:
-            file.write(a + ' ')
-        file.write(str(np.sqrt(error)) + ' ' + str(np.sqrt(error_train))
-                   + ' ' + str(seed) + '\n')
-        file.close()
 
-
-#added by Johannes 
+ 
 # prediction of our data
 tr, vr = loadData(os.path.join(DATA_DIR, "to_predict.dat"), delimiter='::',
                   seed=seed, transpose=True, valfrac=-0.1, shuffle_data = False)
