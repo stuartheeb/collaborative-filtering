@@ -118,6 +118,7 @@ optimizer = tf.contrib.opt.ScipyOptimizerInterface(loss, options={'maxiter': out
 init = tf.global_variables_initializer()
 saver = tf.train.Saver()
 best_rmse = np.inf
+best_epoch = -1
 with tf.Session() as sess:
     sess.run(init)
     print("num epochs to run: ",int(n_epoch / output_every))
@@ -133,12 +134,13 @@ with tf.Session() as sess:
         print('epoch:', i, 'validation rmse:', np.sqrt(error), 'train rmse:', np.sqrt(error_train))
         print('.-^-._' * 12)
 
-        if(error < best_rmse):
+        if(np.sqrt(error) < best_rmse):
           saver.save(sess, "/content/drive/MyDrive/CIL Project/kernelNet/checkpoints/model")
-          best_rmse = error
+          best_rmse = np.sqrt(error)
+          best_epoch = i
           print("updated model checkpoint")
 
-    print("finished training, best rmse = ", best_rmse)
+    print("finished training, best rmse = ", best_rmse, " best epoch: ", best_epoch)
     with open('summary_ml1m.txt', 'a') as file:
         for a in sys.argv[1:]:
             file.write(a + ' ')
