@@ -15,7 +15,10 @@ np.random.seed(seed)
 
 
 # load data
-tr, vr = loadData('/content/drive/MyDrive/CIL Project/kernelNet/ratings.dat', delimiter='::',
+
+DATA_DIR = str(sys.argv[1])
+
+tr, vr = loadData(os.path.join(DATA_DIR, "ratings.dat"), delimiter='::',
                   seed=seed, transpose=True, valfrac=0.1)
 
 tm = np.greater(tr, 1e-12).astype('float32')  # masks indicating non-zero entries
@@ -26,8 +29,8 @@ n_u = tr.shape[1]  # number of users (may be switched depending on 'transpose' i
 
 # Set hyper-parameters
 n_hid = 500
-lambda_2 = float(sys.argv[1]) if len(sys.argv) > 1 else 60.
-lambda_s = float(sys.argv[2]) if len(sys.argv) > 2 else 0.013
+lambda_2 = float(sys.argv[2]) if len(sys.argv) > 2 else 60.
+lambda_s = float(sys.argv[3]) if len(sys.argv) > 3 else 0.013
 n_layers = 2
 output_every = 50  # evaluate performance on test set; breaks l-bfgs loop
 n_epoch = n_layers * 10 * output_every
@@ -135,14 +138,14 @@ with tf.Session() as sess:
         print('.-^-._' * 12)
 
         if(np.sqrt(error) < best_rmse):
-          saver.save(sess, "/content/drive/MyDrive/CIL Project/kernelNet/checkpoints/model")
+          saver.save(sess, os.path.join(DATA_DIR, "checkpoints/model"))
           best_rmse = np.sqrt(error)
           best_epoch = i
           print("updated model checkpoint")
 
     print("finished training, best rmse = ", best_rmse, " best epoch: ", best_epoch)
     with open('summary_ml1m.txt', 'a') as file:
-        for a in sys.argv[1:]:
+        for a in sys.argv[2:]:
             file.write(a + ' ')
         file.write(str(np.sqrt(error)) + ' ' + str(np.sqrt(error_train))
                    + ' ' + str(seed) + '\n')
@@ -151,12 +154,12 @@ with tf.Session() as sess:
 
 #added by Johannes 
 # prediction of our data
-tr, vr = loadData('/content/drive/MyDrive/CIL Project/kernelNet/to_predict.dat', delimiter='::',
+tr, vr = loadData(os.path.join(DATA_DIR, "to_predict.dat"), delimiter='::',
                   seed=seed, transpose=True, valfrac=-0.1, shuffle_data = False)
 print("prediction data shape: ", tr.shape, " ", "validation data shape: ", vr.shape)
 with tf.Session() as sess:
-    saver.restore(sess, "/content/drive/MyDrive/CIL Project/kernelNet/checkpoints/model")
+    saver.restore(sess, os.path.join(DATA_DIR, "checkpoints/model"))
     pre = sess.run(prediction, feed_dict={R: tr}) #predict ratings
-    pd.DataFrame(pre).to_csv("/content/drive/MyDrive/CIL Project/kernelNet/raw_predictions.csv")
+    pd.DataFrame(pre).to_csv(os.path.join(DATA_DIR, "raw_predictions.csv"))
     
 
