@@ -1,5 +1,5 @@
 '''
-written by Lorenz Muller
+written by Lorenz Muller, adapted by Johannes Kurz
 '''
 
 import numpy as np
