@@ -4,3 +4,5 @@ typing
 tqdm
 scikit-learn
 surprise
+myfm
+pykeen
