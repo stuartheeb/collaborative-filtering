@@ -24,7 +24,8 @@ The project contains the following methods, runnable as self-contained and indep
 ### Neural Networks
 
 * Neural Net for Collaborative Filtering ([notebook](Neural_Networks/neural_nets.ipynb)).
-* Sparse FC ([notebook](Neural_Networks/sparseFC.ipynb)).
+* Sparse-FC ([notebook](Neural_Networks/sparseFC.ipynb)).
+* GLocal-K ([notebook](Neural_Networks/GLocal_K.ipynb)).
 * Knowledge Graphs ([notebook](Neural_Networks/Knowledge_Graphs.ipynb)).
 
 ### Factorization Machines
