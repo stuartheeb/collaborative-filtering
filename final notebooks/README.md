@@ -2,7 +2,7 @@
 
 Team: Runtime Terror
 
-## Running the codes
+## Running the code
 
 The notebooks can be run on Google Colab. For the case of X, it is best if the code is run locally due to RAM requirements.
 
@@ -24,3 +24,8 @@ The project contains the following methods, runnable as self-contained and indep
 ### Factorization Machines
 
 * ...
+
+
+## Data Preprocessing
+
+For data input processing and preparation, we used some code found in the notebook for the CIL 2021 course, available [here](https://colab.research.google.com/github/dalab/lecture_cil_public/blob/master/exercises/2021/Project_1.ipynb).
