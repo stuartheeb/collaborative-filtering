@@ -11,16 +11,21 @@ The project contains the following methods, runnable as self-contained and indep
 
 ### Matrix Factorization
 
-* The baseline solution - SVD + ALS on a normalized dataset ([notebook](notebooks/Baseline.ipynb)).
+ * The baseline solution - SVD + ALS on a normalized dataset ([notebook](Matrix_Factorization/baseline.ipynb)).
+ * The baseline solution with a k-NN initialization approach ([notebook](Matrix_Factorization/baseline_knn.ipynb)).
+ * The baseline solution with a Gaussian processes approach ([notebook](Matrix_Factorization/baseline_gp.ipynb)).
+ * Improved SVD ([notebook](Matrix_Factorization/improved_svd.ipynb)).
+ * The baseline solution with Improved SVD ([notebook](Matrix_Factorization/baseline_improved_svd.ipynb)).
 
-### Neural Networks
+ ### Neural Networks
 
-*
+ * Neural Net for Collaborative Filtering ([notebook](Neural_Networks/neural_nets.ipynb)).
+ * Sparse FC ([notebook](Neural_Networks/sparseFC.ipynb)).
+ * Knowledge Graphs ([notebook](Neural_Networks/Knowledge_Graphs.ipynb)).
 
-### Factorization Machines
+ ### Factorization Machines
 
-*
-
+ * ...
 ## Setup
 
 1. Start by creating a virtual environment. Using conda,
