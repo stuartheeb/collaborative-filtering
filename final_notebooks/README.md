@@ -16,6 +16,7 @@ The project contains the following methods, runnable as self-contained and indep
 * The baseline solution with a k-NN initialization approach ([notebook](Matrix_Factorization/baseline_knn.ipynb)).
 * The baseline solution with a Gaussian processes approach ([notebook](Matrix_Factorization/baseline_gp.ipynb)).
 * Improved SVD ([notebook](Matrix_Factorization/improved_svd.ipynb)).
+* The baseline solution with Improved SVD ([notebook](Matrix_Factorization/baseline_improved_svd.ipynb)).
 
 ### Neural Networks
 
