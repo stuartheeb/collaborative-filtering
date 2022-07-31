@@ -29,7 +29,16 @@ The project contains the following methods, runnable as self-contained and indep
 
 ### Factorization Machines
 
-* ...
+* Bayesian Factorization Machine ([notebook](Bayesian_Factorization_Machines/BFM_Regressors/Bayesian_Factorization_Machine.ipynb))
+* Bayesian SVD++ ([notebook](Bayesian_Factorization_Machines/BFM_Regressors/Bayesian_SVDpp.ipynb))
+* Bayesian SVD++ flipped ([notebook](Bayesian_Factorization_Machines/BFM_Regressors/Bayesian_SVDpp_flipped.ipynb))
+* Weighted Bayesian SVD++ flipped ([notebook](Bayesian_Factorization_Machines/BFM_Regressors/Weighted_Bayesian_SVDpp_flipped.ipynb))
+* Bayesian SVD++ flipped with rating ([notebook](Bayesian_Factorization_Machines/BFM_Regressors/Bayesian_SVDpp_flipped_rating.ipynb))
+* Bayesian SVD++ flipped with embeddings ([notebook](Bayesian_Factorization_Machines/BFM_Regressors/Bayesian_SVDpp_flipped_with_Embeddings.ipynb))
+* Bayesian SVD++ flipped Ordered Probit ([notebook](Bayesian_Factorization_Machines/Ordered_Probit/Bayesian_SVDpp_flipped_Ordered_Probit.ipynb))
+* Bayesian SVD++ flipped Ordered Probit with rating ([notebook](Bayesian_Factorization_Machines/Ordered_Probit/Bayesian_SVDpp_flipped_rating_Order_Probit.ipynb))
+* Bayesian SVD++ flipped Ordered Probit with embeddings ([notebook](Bayesian_Factorization_Machines/Ordered_Probit/Bayesian_SVDpp_flipped_with_Embeddings_Ordered_Probit.ipynb))
+
 
 >>>>>>> 96c6fd468ee27f754fd042f387fd00ee882c5ed1
 
