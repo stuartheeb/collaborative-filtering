@@ -8,23 +8,7 @@ The notebooks can be run on Google Colab. For the case of X, it is best if the c
 
 ## Content
 
-The project contains the following methods, runnable as self-contained and independent Jupyter notebooks, for collaborative filtering:
-
-### Matrix Factorization
-
-* The baseline solution - SVD + ALS on a normalized dataset ([notebook](final notebooks/Baseline.ipynb)).
-* ...
-
-### Neural Networks
-
-* Neural Net for Collaborative Filtering ([notebook](final notebooks/neural_net.ipynb)).
-* Sparse FC ([notebook](final notebooks/sparceFC.ipynb)).
-* Knowledge Graphs ([notebook](final notebooks/Knowledge Graphs.ipynb)).
-
-### Factorization Machines
-
-* ...
-
+The project contains the following methods, runnable as self-contained and independent Jupyter notebooks, for collaborative filtering. [This](Bayesian_Factorization_Machines/Ordered_Probit/Bayesian_SVDpp_flipped_with_Embeddings_Ordered_Probit.ipynb) is the notebook that produced the best score.
 
 ## Data Preprocessing
 
