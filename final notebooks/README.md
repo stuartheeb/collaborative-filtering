@@ -12,14 +12,14 @@ The project contains the following methods, runnable as self-contained and indep
 
 ### Matrix Factorization
 
-* The baseline solution - SVD + ALS on a normalized dataset ([notebook](notebooks/Baseline.ipynb)).
+* The baseline solution - SVD + ALS on a normalized dataset ([notebook](final notebooks/Baseline.ipynb)).
 * ...
 
 ### Neural Networks
 
-* Neural Net for Collaborative Filtering ([notebook](notebooks/neural_net.ipynb)).
-* Sparce FC ([notebook](notebooks/sparceFC.ipynb)).
-* Knowledge Graphs ([notebook](notebooks/Knowledge Graphs.ipynb)).
+* Neural Net for Collaborative Filtering ([notebook](final notebooks/neural_net.ipynb)).
+* Sparse FC ([notebook](final notebooks/sparceFC.ipynb)).
+* Knowledge Graphs ([notebook](final notebooks/Knowledge Graphs.ipynb)).
 
 ### Factorization Machines
 
